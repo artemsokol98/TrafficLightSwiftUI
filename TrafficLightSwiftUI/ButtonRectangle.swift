@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ButtonRectangle: View {
+    
     let text: String
+    let action: () -> Void
     
     var body: some View {
-        Text("\(text)")
-            .foregroundColor(.white)
-            .background(RoundedRectangle(cornerRadius: 25, style: .continuous)
-                .fill(Color.blue)
+        Button(action: action) {
+            Text(text)
+                .foregroundColor(.white)
+                .background(RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .fill(Color.blue)
+                    .frame(width: 200, height: 80)
+                )
                 .frame(width: 200, height: 80)
-            )
-            .frame(width: 200, height: 80)
-            .overlay(RoundedRectangle(cornerRadius: 25, style: .continuous).stroke(Color.white, lineWidth: 4))
-        
+                .overlay(RoundedRectangle(cornerRadius: 25, style: .continuous).stroke(Color.white, lineWidth: 4))
+        }
     }
+    
 }
 
 struct ButtonRectangle_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonRectangle(text: "hello")
+        ButtonRectangle(text: "hello", action: {})
     }
 }
